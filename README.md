@@ -52,11 +52,12 @@ This lab environment acts as an isolated sandbox for hands-on cybersecurity lear
 ## 🪜 Lab Setup & Execution Steps
 
 ### Step 1. Hypervisor Setup
-
+---
 Installed Oracle VirtualBox to manage local virtual machines.
 
+---
 ### Step 2. Create and Configure the Private NAT Network
-
+---
 A dedicated NAT Network was created within VirtualBox preferences to handle internal routing and external connectivity.
 
 Configuration: 
@@ -66,9 +67,11 @@ Configuration:
 * DHCP: Enabled 
 * IPv6: Disabled
   ```
+![NatNetwork_Enabled_On_VBox](https://github.com/DifaTech/NETWORKWALKS-DIFATECH-B083-WK1-PM1-CYBERSEURITY-LAB-SETUP/blob/main/NatNetwork_Enabled_On_VBox.png)
 
+---
 ### Step 3. Kali Linux Network Adapter Configuration
-
+---
 The Kali Linux virtual machine was downloaded from the official Kali Linux website and imported into VirtualBox.
 The VM network adapter was configured as follows:
 ```
@@ -76,9 +79,13 @@ The VM network adapter was configured as follows:
 * **Attached to:** NAT Network (NatNetwork)
 * **Adapter Type:** Intel PRO/1000 MT Desktop
   ```
+![Kali_Interface](https://github.com/DifaTech/NETWORKWALKS-DIFATECH-B083-WK1-PM1-CYBERSEURITY-LAB-SETUP/blob/main/Kali_Interface.png)
 
+A shared folder was also configured for transferring required files between the host operating system and the Kali VM.
+
+---
 ### Step 4. Detailed IP Configuration in Kali Linux
-
+---
 To maintain a consistent network footprint and make referencing the machine reliable for future security exercises, a consistent IPv4 address was configured.
 
 Configuration Details:
@@ -88,11 +95,13 @@ Configuration Details:
 * **Default Gateway:** `10.0.0.1`
 * **DNS Server:** `8.8.8.8`
 ```
+![Kali_Network_Configuration](https://github.com/DifaTech/NETWORKWALKS-DIFATECH-B083-WK1-PM1-CYBERSEURITY-LAB-SETUP/blob/main/Kali_Network_Configuration.png)
 
 The configuration was applied via the network connection manager (setting method to Manual) and refreshed using NetworkManager (`nmcli`) to ensure smooth routing without duplicate address detection conflicts.
 
+---
 ### Step 5. Create a Clean VM Snapshot
-
+---
 Immediately after successful network configuration and connectivity checks, a baseline snapshot was captured.
 
 * **Snapshot Name:** `Clean Kali - Network Setup`
