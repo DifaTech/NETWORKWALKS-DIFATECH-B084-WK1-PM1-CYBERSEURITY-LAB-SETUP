@@ -122,8 +122,13 @@ This snapshot serves as a known-good recovery point. If a future penetration tes
 ---
 ## 🐞 Challenges Faced & Troubleshooting
 
-* **Network Manager Timeout:** Resolved potential DHCP/static configuration delays on Kali by adjusting the NetworkManager DAD timeout parameter via terminal commands when necessary.
-* **Virtualization Support:** Ensured hardware-assisted virtualization (Intel VT-x / AMD-V) was enabled in the system BIOS to allow the 64-bit virtual machines to boot correctly.
+**Problem 1. Destination Host Unreachable / Network Conflicts**
+* *Cause:* Having conflicting virtual adapters (such as an extra Host-Only adapter active simultaneously) or an incorrect netmask notation can break local routing tables.
+* *Solution:* Cleaned up extra competing adapters, ensured Adapter 1 was explicitly bound to `NatNetwork` and re-applied the connection state via terminal commands.
+
+**Problem 2. Static IP Application Delay**
+* *Cause:* NetworkManager occasionally experiences timeouts or delay when transitioning from DHCP to manual static assignments.
+* *Solution:* Handled connection refreshing using `sudo nmcli connection up "Wired connection 1"` to force an immediate reload of the configuration.
 
 ---
 ## 💡 Key Takeaways
